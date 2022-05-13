@@ -1,0 +1,188 @@
+{% extends "layouts/base.html" %} {% block title %} Dashboard {% endblock %} {% block content %}
+
+<div class="my-3 my-md-5">
+
+    <div class="container">
+
+        <div class="page-header">
+            <h1 class="page-title">
+                Dashboard
+            </h1>
+        </div>
+
+        <div class="row row-cards">
+
+            <div class="col-6 col-sm-4 col-lg-4">
+                <div class="card">
+                    <div class="card-body p-3 text-center">
+
+                        <div class="h1 m-0">2</div>
+                        <div class="text-muted mb-4">Dados Mapeados</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-sm-4 col-lg-4">
+                <div class="card">
+                    <div class="card-body p-3 text-center">
+
+                        <div class="h1 m-0">3</div>
+                        <div class="text-muted mb-4">Setores</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 col-sm-4 col-lg-4">
+                <div class="card">
+                    <div class="card-body p-3 text-center">
+
+                        <div class="h1 m-0">2</div>
+                        <div class="text-muted mb-4">Equipes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Itens Auditáveis</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="chart-donut" style="height: 12rem;"></div>
+                        </div>
+                    </div>
+                    <script>
+                        require(['c3', 'jquery'], function(c3, $) {
+                            $(document).ready(function() {
+                                var chart = c3.generate({
+                                    bindto: '#chart-donut', // id of chart wrapper
+                                    data: {
+                                        columns: [
+                                            // each columns data
+                                            ['data1', 95],
+                                            ['data2', 5]
+                                        ],
+                                        type: 'donut', // default type of chart
+                                        colors: {
+                                            'data1': tabler.colors["green"],
+                                            'data2': tabler.colors["green-light"]
+                                        },
+                                        names: {
+                                            // name of each serie
+                                            'data1': 'Não Respondidos',
+                                            'data2': 'Respondidos'
+                                        }
+                                    },
+                                    axis: {},
+                                    legend: {
+                                        show: false, //hide legend
+                                    },
+                                    padding: {
+                                        bottom: 0,
+                                        top: 0
+                                    },
+                                });
+                            });
+                        });
+                    </script>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Fator de Risco</h3>
+                        </div>
+                        <div class="card-body">
+                            <div id="chart-pie" style="height: 12rem;"></div>
+                        </div>
+                    </div>
+                    <script>
+                        require(['c3', 'jquery'], function(c3, $) {
+                            $(document).ready(function() {
+                                var chart = c3.generate({
+                                    bindto: '#chart-pie', // id of chart wrapper
+                                    data: {
+                                        columns: [
+                                            // each columns data
+                                            ['data1', 90],
+                                            ['data2', 10],
+                                            ['data3', 0],
+                                            ['data4', 0]
+                                        ],
+                                        type: 'pie', // default type of chart
+                                        colors: {
+                                            'data1': tabler.colors["blue-darker"],
+                                            'data2': tabler.colors["blue"],
+                                            'data3': tabler.colors["blue-light"],
+                                            'data4': tabler.colors["blue-lighter"]
+                                        },
+                                        names: {
+                                            // name of each serie
+                                            'data1': 'Urgente',
+                                            'data2': 'Alto Risco',
+                                            'data3': 'Risco Médio',
+                                            'data4': 'Irrelevante'
+                                        }
+                                    },
+                                    axis: {},
+                                    legend: {
+                                        show: false, //hide legend
+                                    },
+                                    padding: {
+                                        bottom: 0,
+                                        top: 0
+                                    },
+                                });
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+
+            {% endblock content %}
+
+            <!-- Specific Page JS goes HERE  -->
+            {% block javascripts %}
+
+            <script>
+                require(['jquery'], function() {
+                    $(document).ready(function() {
+
+                        function setCookie(name, value, days) {
+                            var expires = "";
+                            if (days) {
+                                var date = new Date();
+                                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                                expires = "; expires=" + date.toUTCString();
+                            }
+                            document.cookie = name + "=" + (value || "") + expires + "; path=/";
+                        }
+
+                        function getCookie(name) {
+                            var nameEQ = name + "=";
+                            var ca = document.cookie.split(';');
+                            for (var i = 0; i < ca.length; i++) {
+                                var c = ca[i];
+                                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+                            }
+                            return null;
+                        }
+
+                        if (!getCookie('bottombar-hidden')) {
+                            $('.js-bottombar').show();
+                        }
+
+                        $('.js-bottombar-close').on('click', function(e) {
+                            $('.js-bottombar').hide();
+                            setCookie('bottombar-hidden', 1, 7);
+
+                            e.preventDefault();
+                            return false;
+                        });
+                    });
+                });
+            </script>
+
+            {% endblock javascripts %}

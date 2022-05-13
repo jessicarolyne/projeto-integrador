@@ -1,0 +1,64 @@
+{% extends "layouts/base.html" %} {% block title %} Cadastro de DPO {% endblock %} {% block content %}{% load widget_tweaks%}
+
+<div class="my-3 my-md-5">
+    <div class="container">
+
+        <div class="page-header">
+            <h1 class="page-title">
+                Informações do DPO
+            </h1>
+        </div>
+        <div class="col-8 m-auto pt-3 pb-2 text-center">
+            <a href="/cadastrar_dpo" class="btn btn-success">Adicionar</a>
+        </div>
+        <form name="form" id="form" action="/create_dpo/" method="post">
+            <fieldset class="form-fieldset ">
+                {% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome do DPO</th>
+                                <th scope="col">CPF</th>
+                                <th scope="col">Cargo</th>
+                                <th scope="col">Contato</th>
+                                <th scope="col">Empresa</th>
+                                <th scope="col">CNPJ</th>
+                                <th scope="col">Endereço</th>
+                                <th scope="col">Cidade</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dbs in db %}
+                            <tr>
+                                <th scope="row">{{dbs.id}}</th>
+                                <td>{{dbs.nome}}</td>
+                                <td>{{dbs.cpf}}</td>
+                                <td>{{dbs.cargo}}</td>
+                                <td>{{dbs.contato}}</td>
+                                <td>{{dbs.empresa}}</td>
+                                <td>{{dbs.cnpj}}</td>
+                                <td>{{dbs.endereco}}</td>
+                                <td>{{dbs.cidade}}</td>
+                                <td>{{dbs.estado}}</td>
+                                <td>
+                                    <a href="/edit_dpo/{{dbs.id}}/" class="btn btn-dark ">Editar</a>
+                                    <a href="/delete_dpo/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            </fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %} {% load static %}
+<script src="{% static 'assets/js/javascript.js' %}"></script>{% endblock javascripts %}

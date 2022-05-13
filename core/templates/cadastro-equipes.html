@@ -1,0 +1,55 @@
+{% extends "layouts/base.html" %} {% block title %} Cadastro de Equipes {% endblock %} {% block content %}
+
+
+<div class="my-3 my-md-5">
+    <div class="container">
+
+        <div class="page-header">
+            <h1 class="page-title">
+                Cadastro de Equipes
+            </h1>
+        </div>
+        <div class="col-8 m-auto pt-3 pb-2 text-center">
+            <a href="/cadastrar_equipe" class=" btn btn-success ">Adicionar</a>
+        </div>
+        <form name="form " id="form " action="/create_equipe/ " method="post ">
+            <fieldset class="form-fieldset ">
+                {% csrf_token %}
+                <div class="table-responsive ">
+
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">Telefone</th>
+                                <th scope="col">Responsabilidade</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dbs in db %}
+                            <tr>
+                                <th scope="row ">{{dbs.id}}</th>
+                                <td>{{dbs.nome}}</td>
+                                <td>{{dbs.telefone}}</td>
+                                <td>{{dbs.responsabilidade}}</td>
+                                <td>
+                                    <a href="/edit_equipe/{{dbs.id}}/" class="btn btn-dark ">Editar</a>
+                                    <a href="/delete_equipe/{{dbs.id}}/" class="btn btn-danger btnDel ">Deletar</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            </fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %} {% load static %}
+<script src="{% static 'assets/js/javascript.js' %} "></script>{% endblock javascripts %}

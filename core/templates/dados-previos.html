@@ -1,0 +1,47 @@
+{% extends "layouts/base.html" %} {% block title %} Dados Prévios {% endblock %} {% block content %}
+
+
+<div class="my-3 my-md-5">
+    <div class="container">
+
+        <div class="page-header">
+            <h1 class="page-title">
+                Dados Prévios
+            </h1>
+        </div>
+        <form name="form" id="form" method="post">
+            <fieldset class="form-fieldset ">
+                {% csrf_token %}
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Questão</th>
+                                <th scope="col">Resposta</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dbs in db %}
+                            <tr>
+                                <th scope="row">{{dbs.id}}</th>
+                                <td>{{dbs.questao_dados_previos}}</td>
+                                <td>{{dbs.resposta}}</td>
+                                <td>
+                                    <a href="/edit_dados_previos/{{dbs.id}}/" class="btn btn-dark ">Editar</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            </fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,55 @@
+{% extends "layouts/base.html" %} {% block title %} Itens Auditáveis {% endblock %} {% block content %}
+
+
+<div class="my-3 my-md-5">
+    <div class="container">
+
+        <div class="page-header">
+            <h1 class="page-title">
+                Itens Auditáveis
+            </h1>
+        </div>
+        <form name="form" id="form" method="post">
+            <fieldset class="form-fieldset ">
+                {% csrf_token %}
+                <div class="table-responsive">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Questão</th>
+                                <th scope="col">IL</th>
+                                <th scope="col">ICN</th>
+                                <th scope="col">E</th>
+                                <th scope="col">FR</th>
+                                <th scope="col">Ações</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dbs in db %}
+                            <tr>
+                                <th scope="row">{{dbs.id}}</th>
+                                <td>{{dbs.questao_itens_auditaveis }}</td>
+                                <td>{{dbs.il}}</td>
+                                <td>{{dbs.icn}}</td>
+                                <td>{{dbs.e}}</td>
+                                <td>{{dbs.fr}}</td>
+                                <td>
+                                    <a href="/edit_itens_auditaveis/{{dbs.id}}/" class="btn btn-outline-dark w-30 ">Editar</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            </fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

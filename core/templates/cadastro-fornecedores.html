@@ -1,0 +1,56 @@
+{% extends "layouts/base.html" %} {% block title %} Cadasrto de Fornecedores {% endblock %} {% block content %}
+
+<div class="my-3 my-md-5">
+    <div class="container">
+
+        <div class="page-header">
+            <h1 class="page-title">
+                Cadastro de Fornecedores
+            </h1>
+        </div>
+        <div class="col-8 m-auto pt-3 pb-2 text-center">
+            <a href="/cadastrar_fornecedores" class="btn btn-success">Adicionar</a>
+        </div>
+        <form name="form" id="form" action="/create_fornecedores/" method="post">
+            <fieldset class="form-fieldset ">
+                {% csrf_token %}
+                <div class="table-responsive">
+
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Fornecedor</th>
+                                <th scope="col">CNPJ</th>
+                                <th scope="col">DPO</th>
+                                <th scope="col">Telefone</th>
+                                <th scope="col">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for dbs in db %}
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>{{dbs.fornecedor}}</td>
+                                <td>{{dbs.cnpj}}</td>
+                                <td>{{dbs.dpo}}</td>
+                                <td>{{dbs.telefone}}</td>
+                                <td>
+                                    <a href="/edit_fornecedores/{{dbs.id}}/" class="btn btn-dark ">Editar</a>
+                                    <a href="/delete_fornecedores/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            </fieldset>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %} {% load static %}
+<script src="{% static 'assets/js/javascript.js' %}"></script>{% endblock javascripts %}
