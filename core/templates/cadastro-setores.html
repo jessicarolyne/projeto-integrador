@@ -8,7 +8,7 @@
             </h1>
         </div>
         <div class="col-8 m-auto pt-3 pb-2 text-center">
-            <a href="/cadastrar_setor" class="btn btn-success">Adicionar</a>
+            <a href="/cadastrar_setor" class="btn btn-info">Adicionar</a>
         </div>
         <form name="form" id="form" action="/create_setor/" method="post">
             <fieldset class="form-fieldset ">
@@ -35,8 +35,8 @@
                                 <td>{{dbs.cargo_setor}}</td>
                                 <td>
 
-                                    <a href="/edit_setor/{{dbs.id}}/" class="btn btn-dark ">Editar</a>
-                                    <a href="/delete_setor/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
+                                    <a alt="Editar" href="/edit_setor/{{dbs.id}}/" class="fe fe-edit"></a>
+                                    <a href="/delete_setor/{{dbs.id}}/" class="fe fe-trash"></a>
                                 </td>
                             </tr>
                             {% endfor %}

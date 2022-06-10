@@ -17,11 +17,13 @@ class Cad_empresa(models.Model):
     estado_empresa = models.CharField(max_length=40)
     telefone_empresa = models.CharField(max_length=15)
 
+from django.db.models import Count
 class Cad_setores(models.Model):
     setor_nome = models.CharField(max_length=30)
     resposavel_setor = models.CharField(max_length=30)
     cargo_setor = models.CharField(max_length=30)
     contato_setor = models.CharField(max_length=30)
+
 
 class Cad_equipes(models.Model):
     nome = models.CharField(max_length=30)

@@ -8,10 +8,16 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from app.forms import *
 from app.models import *
+from django.db.models import Count
 
 @login_required(login_url="/login/")
 def index(request):
-    return render(request, "index.html")
+    data = {}
+    data['count_setores'] = len(Cad_setores.objects.all())
+    data['count_mapeamento'] = len(Cad_Mapeamento.objects.all())
+    data['count_equipes'] = len(Cad_equipes.objects.all())
+    data['count_itens_auditaveis'] = len(Cad_itens_auditaveis.objects.all())
+    return render(request, "index.html",data)
 
 
 @login_required(login_url="/login/")

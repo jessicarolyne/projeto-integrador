@@ -9,7 +9,7 @@
             </h1>
         </div>
         <div class="col-8 m-auto pt-3 pb-2 text-center">
-            <a href="/cadastrar_fornecedores" class="btn btn-success">Adicionar</a>
+            <a href="/cadastrar_fornecedores" class="btn btn-info">Adicionar</a>
         </div>
         <form name="form" id="form" action="/create_fornecedores/" method="post">
             <fieldset class="form-fieldset ">
@@ -36,8 +36,8 @@
                                 <td>{{dbs.dpo}}</td>
                                 <td>{{dbs.telefone}}</td>
                                 <td>
-                                    <a href="/edit_fornecedores/{{dbs.id}}/" class="btn btn-dark ">Editar</a>
-                                    <a href="/delete_fornecedores/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
+                                    <a href="/edit_fornecedores/{{dbs.id}}/" class="fe fe-edit"></a>
+                                    <a href="/delete_fornecedores/{{dbs.id}}/" class="fe fe-trash"></a>
                                 </td>
                             </tr>
                             {% endfor %}

@@ -21,7 +21,7 @@ SECRET_KEY = config('SECRET_KEY', default='S#perS3crEt_1122')
 DEGUG = False
 
 # load production server from .env
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', config('SERVER', default='127.0.0.1'),'gabrielranulfo.pythonanywhere.com',]
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', config('SERVER', default='127.0.0.1'),'netinfo-informatica.com.br',]
 
 # Application definition
 
@@ -74,22 +74,20 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 # settings.py
-'''DATABASES = {
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'OPTIONS': {
-            'read_default_file': '/etc/mysql/my.cnf',
+            #'read_default_file': '/etc/mysql/my.cnf',
+            'sql_mode' : 'traditional',
         },
+        'NAME' : 'netinfoi_projeto-integrador',
+        'USER' : 'netinfoi_netinfo',
+        'PASSWORD' : 'mdDgfkWBNg67862',
+        'HOST' : 'localhost',
+        'PORT' : '3306',
     }
-}'''
-
-# sqliteversion
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME':'db',
-        }
-    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -138,7 +136,7 @@ STATIC_URL = '/static/'
 
 #STATIC_ROOT = "/home/gabrielranulfo/projeto-integrador/staticfiles"
 #STATIC_ROOT = "/home/gabriel/dev/Python/0 - Estudos/django/dash/projeto-integrador"
-STATIC_ROOT = r"/home/gabriel/Documentos/Faculdade/Projeto Integrador/PI II/projeto-integrador"
+STATIC_ROOT = r"/home/netinfoi/public_html/static"
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
@@ -146,4 +144,8 @@ STATICFILES_DIRS = (
 )
 #############################################################
 #############################################################
+
+SECURE_HSTS_SECONDS = 31536000
+
+SECURE_CONTENT_TYPE_NOSNIFF = True
 

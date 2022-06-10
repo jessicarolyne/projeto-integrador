@@ -9,14 +9,13 @@
                 Dashboard
             </h1>
         </div>
-
         <div class="row row-cards">
 
             <div class="col-6 col-sm-4 col-lg-4">
                 <div class="card">
                     <div class="card-body p-3 text-center">
 
-                        <div class="h1 m-0">2</div>
+                        <div class="h1 m-0">{{count_mapeamento}}</div>
                         <div class="text-muted mb-4">Dados Mapeados</div>
                     </div>
                 </div>
@@ -26,7 +25,7 @@
                 <div class="card">
                     <div class="card-body p-3 text-center">
 
-                        <div class="h1 m-0">3</div>
+                        <div class="h1 m-0">{{count_setores}}</div>
                         <div class="text-muted mb-4">Setores</div>
                     </div>
                 </div>
@@ -36,7 +35,7 @@
                 <div class="card">
                     <div class="card-body p-3 text-center">
 
-                        <div class="h1 m-0">2</div>
+                        <div class="h1 m-0">{{count_equipes}}</div>
                         <div class="text-muted mb-4">Equipes</div>
                     </div>
                 </div>
@@ -53,6 +52,7 @@
                             <div id="chart-donut" style="height: 12rem;"></div>
                         </div>
                     </div>
+                    {%block scripts%}
                     <script>
                         require(['c3', 'jquery'], function(c3, $) {
                             $(document).ready(function() {
@@ -61,8 +61,8 @@
                                     data: {
                                         columns: [
                                             // each columns data
-                                            ['data1', 95],
-                                            ['data2', 5]
+                                            ['data1', 100-{{count_itens_auditaveis}}],
+                                            ['data2', {{count_itens_auditaveis}}]
                                         ],
                                         type: 'donut', // default type of chart
                                         colors: {
@@ -87,6 +87,7 @@
                             });
                         });
                     </script>
+                    {%endblock scripts%}
                 </div>
                 <div class="col-sm-6">
                     <div class="card">
@@ -105,10 +106,10 @@
                                     data: {
                                         columns: [
                                             // each columns data
-                                            ['data1', 90],
-                                            ['data2', 10],
-                                            ['data3', 0],
-                                            ['data4', 0]
+                                            ['Urgente', 90],
+                                            ['Alto Risco', 10],
+                                            ['Risco Médio', 0],
+                                            ['Irrelevante', 0]
                                         ],
                                         type: 'pie', // default type of chart
                                         colors: {
