@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
 
+    
     <script src="/static/assets/js/require.min.js"></script>
     <script>
         requirejs.config({
@@ -45,6 +46,7 @@
     <script src="/static/assets/plugins/input-mask/plugin.js"></script>
     <!-- Datatables Plugin -->
     <script src="/static/assets/plugins/datatables/plugin.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 </head>
 
 <body class="">
@@ -59,9 +61,24 @@
         {% include 'includes/footer.html' %}
 
     </div>
-
+{%block scripts%}
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+<a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+{%endblock scripts%}
     <!-- Specific Page JS goes HERE  -->
-    {% block javascripts %}{% endblock javascripts %}
+    {% block javascripts %}
+
+
+    {% endblock javascripts %}
 
 </body>
 

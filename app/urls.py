@@ -63,3 +63,4 @@ urlpatterns = [
     path('delete_mapeamento/<int:pk>/',delete_mapeamento, name='delete_mapeamento'),   
     # Adicionar a função de visualizar
 ]
+
