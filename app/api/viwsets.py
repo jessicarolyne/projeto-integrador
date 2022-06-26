@@ -11,3 +11,7 @@ class CadSetoresViewSet(viewsets.ModelViewSet):
 class CadEquipesViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.CadEquipesSerializer
     queryset = models.Cad_equipes.objects.all()
+
+class ItensAuditaveisViewSet(viewsets.ModelViewSet):
+    serializer_class = serializers.ItensAuditaveisSerializer
+    queryset = models.Cad_itens_auditaveis.objects.all()

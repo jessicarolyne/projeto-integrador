@@ -14,3 +14,10 @@ class CadEquipesSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Cad_equipes
         fields = '__all__'
+
+class ItensAuditaveisSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Cad_itens_auditaveis
+        fields = '__all__'
+
+        

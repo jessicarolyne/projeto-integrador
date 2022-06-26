@@ -14,6 +14,7 @@ route = routers.DefaultRouter()
 route.register(r'mapeamento',cadmapsviewsets.CadMapViewSet,basename="Cad_Mapeamento")
 route.register(r'setores',cadmapsviewsets.CadSetoresViewSet,basename="Cad_setores")
 route.register(r'equipes',cadmapsviewsets.CadEquipesViewSet,basename="Cad_equipes")
+route.register(r'auditaveis',cadmapsviewsets.ItensAuditaveisViewSet,basename="Cad_itens_auditaveis")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
