@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'app',  # Enable the inner app 
+    #'app2',  # Enable the inner app 
 ]
 
 MIDDLEWARE = [

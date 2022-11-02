@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'app',  # Enable the inner app 
+    #'app2',  # Enable the inner app 
 ]
 
 MIDDLEWARE = [
@@ -139,7 +140,8 @@ STATIC_URL = '/static/'
 
 #STATIC_ROOT = "/home/gabrielranulfo/projeto-integrador/staticfiles"
 #STATIC_ROOT = "/home/gabriel/dev/Python/0 - Estudos/django/dash/projeto-integrador"
-STATIC_ROOT = r"/home/gabriel/Documentos/Faculdade/Projeto Integrador/PI II/projeto-integrador"
+#STATIC_ROOT = r"/home/gabriel/Documentos/Faculdade/Projeto Integrador/PI II/projeto-integrador"
+STATIC_ROOT = r"/home/jessicarolyne/Documentos/univesp/projeto-integrador"
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
